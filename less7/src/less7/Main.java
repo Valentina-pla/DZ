@@ -1,21 +1,34 @@
+
 package less7;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import okhttp3.*;
 
 import java.io.IOException;
-import java.io.StringReader;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.concurrent.TimeUnit;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 
 
 public class Main {
 
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws IOException, SQLException {
+
+
+
+
     try {
+        WeatherRecord rec=new WeatherRecord();
+        rec.localDate="25.03";
+        rec.temperature=-2;
+        rec.city="Saint P";
+        rec.weatherText="cloud";
+        WeatherRepo weatherRepo=new WeatherRepo();
+        weatherRepo.readWeather();
+        weatherRepo.addWeather(rec);
+
         OkHttpClient client = new OkHttpClient()
                 .newBuilder()
                 .connectTimeout(10, TimeUnit.SECONDS)
@@ -41,7 +54,7 @@ public class Main {
 
         WeatherPrinter weatherPrinter=new WeatherPrinter();
         weatherPrinter.print(weather);
-    } catch (JsonProcessingException e){}
+    } catch (JsonProcessingException | SQLException e){throw e;}
 
 
 
