@@ -2,6 +2,7 @@ package org.example;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -29,29 +30,24 @@ public class DetailDescription {
         search.click();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-        search.sendKeys("Свитер женский ");
+        search.sendKeys("свитер женский теплый");
+        search.sendKeys(Keys.ENTER);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-        WebElement clickAccept= driver.findElement(By.xpath("//button[@class='x-button x-button_badgeForegroundColor x-button_32 x-button_intrinsic-width']"));
-        clickAccept.click();
 
-        WebElement searchButton = driver.findElement(By.xpath("//button[@class='x-button x-button_accented x-button_32 _1nlEyvyy1LHvJnhzmHYHEz']"));
-        searchButton.click();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-        WebElement title= driver.findElement(By.xpath("//div[@class='sub-popup-feb18__close']"));
-        title.click();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-        WebElement element= driver.findElement(By.xpath("//a[@href=\"/p/mp002xw0aoqy/clothes-sela-sviter/\"]"));
+        WebElement element= driver.findElement(By.xpath("//div[@class='x-product-card__link x-product-card__hit-area'][1]"));
         element.click();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         WebElement clickElementButton= driver.findElement(By.xpath("//div[@class='icon icon__backward-thin icon_direction-up icon_40 DbimcGhzTHVulqmddD9bP']"));
         clickElementButton.click();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
         clickElementButton.click();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+        clickElementButton.click();
+        clickElementButton.click();
         clickElementButton.click();
 
 

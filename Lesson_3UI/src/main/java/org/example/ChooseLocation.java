@@ -11,6 +11,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import java.util.concurrent.TimeUnit;
 
 import static io.github.bonigarcia.wdm.WebDriverManager.chromedriver;
+import static org.openqa.selenium.Keys.ENTER;
 
 public class ChooseLocation {
 
@@ -25,17 +26,15 @@ public class ChooseLocation {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("https://www.lamoda.ru/");
 
-        WebElement location = driver.findElement(By.cssSelector(".\\_2f5HAC8BA-n1KuEwYHsF-j > span"));
+        WebElement location = driver.findElement(By.xpath("//div[@class='v-popover']"));
         location.click();
-
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 
-        WebElement town = driver.findElement(By.xpath("//a[@class='wCjUeog4KtWw64IplV1e6 _3dch7Ytt3ivpea7TIsKVjb _29RJmG5djxTAgADcAjSrHW']"));
-        town.click();
+
+       WebElement town = driver.findElement(By.xpath("//a[@role='button'][2]"));
+      town.click();
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 
-        WebElement startToBuy= driver.findElement(By.xpath("//button[@class='x-button x-button_primaryFilled x-button_32 x-button_intrinsic-width']"));
-        startToBuy.click();
 
 
 
