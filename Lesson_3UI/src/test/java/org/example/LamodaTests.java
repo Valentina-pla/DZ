@@ -77,6 +77,7 @@ public class LamodaTests {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         WebElement goToTheBasket= driver.findElement(By.xpath("//div[@class='d-modal__bottom']//a"));
         goToTheBasket.click();
+        Assertions.assertEquals("https://www.lamoda.ru/checkout/cart/",getDriver().getCurrentUrl());
 
 
     }
@@ -97,6 +98,7 @@ public class LamodaTests {
         WebElement clickElementButton= driver.findElement(By.xpath("//div[@class='icon icon__backward-thin icon_direction-up icon_40 DbimcGhzTHVulqmddD9bP']"));
         clickElementButton.click();
         clickElementButton.click();
+        Assertions.assertEquals("https://www.lamoda.ru/p/mp002xw09rjh/clothes-stim-sviter/",getDriver().getCurrentUrl());
 
     }
 
@@ -110,6 +112,7 @@ public class LamodaTests {
         WebElement town = driver.findElement(By.xpath("//a[@role='button'][2]"));
         town.click();
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+        Assertions.assertEquals("https://www.lamoda.ru/",getDriver().getCurrentUrl());
 
     }
 
@@ -121,6 +124,7 @@ public class LamodaTests {
         search.click();
         search.sendKeys("Джинсы женские");
         search.sendKeys(Keys.ENTER);
+        Assertions.assertEquals("https://www.lamoda.ru/catalogsearch/result/?q=%D0%B4%D0%B6%D0%B8%D0%BD%D1%81%D1%8B%20%D0%B6%D0%B5%D0%BD%D1%81%D0%BA%D0%B8%D0%B5&submit=y&gender_section=women",getDriver().getCurrentUrl());
 
 
     }
@@ -137,12 +141,13 @@ public class LamodaTests {
         search.click();
         search.sendKeys("neakb ;tycrbt");
         search.sendKeys(Keys.ENTER);
+        Assertions.assertEquals("https://www.lamoda.ru/catalogsearch/result/?q=neakb%20%3Btycrbt&submit=y&gender_section=women",getDriver().getCurrentUrl());
 
     }
 
    @Test
 
-    public void ViewLargeItemPicture () throws InterruptedException {
+    public void SubscriptionTest () throws InterruptedException {
 
         init();
         getPage();
@@ -156,6 +161,8 @@ public class LamodaTests {
                .click(getDriver().findElement(By.xpath("//span[@class='ii-subscription__form-item ii-subscription__form-button button button_blue']")))
                .build()
                 .perform();
+
+       Assertions.assertEquals("https://www.lamoda.ru/",getDriver().getCurrentUrl());
 
 
 
