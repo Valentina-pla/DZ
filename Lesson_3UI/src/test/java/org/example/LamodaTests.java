@@ -25,7 +25,7 @@ import static java.sql.DriverManager.getDriver;
 
 public class LamodaTests {
 
-    private static WebDriver driver;
+   /*  private static WebDriver driver;
 
     @BeforeAll
 
@@ -54,35 +54,35 @@ public class LamodaTests {
     @AfterAll
     static void close(){driver.quit();}
 
-    public static WebDriver getDriver() { return driver;}
+   public static WebDriver getDriver() { return driver;}
 
     @Test
 
-     public void AddItemTest ()  {
+    public void AddItemTest ()  {
         init();
         getPage();
-        WebElement search = driver.findElement(By.xpath("//div[@class='d-header-top-menu-wrapper']//input"));
+       WebElement search = driver.findElement(By.xpath("//div[@class='d-header-top-menu-wrapper']//input"));
         search.click();
         search.sendKeys("кроссовки женские adidas originals");
         search.sendKeys(Keys.ENTER);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        WebElement item  = driver.findElement(By.xpath("//div[@class='x-product-card__link x-product-card__hit-area'][1]"));
+       WebElement item  = driver.findElement(By.xpath("//div[@class='x-product-card__link x-product-card__hit-area'][1]"));
         item.click();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        WebElement addButton= driver.findElement(By.xpath("//button[@class='x-button x-button_primaryFilled x-button_48 _13UOn2F1A_KnQ1IvIHusVP']"));
+       WebElement addButton= driver.findElement(By.xpath("//button[@class='x-button x-button_primaryFilled x-button_48 _13UOn2F1A_KnQ1IvIHusVP']"));
         addButton.click();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         WebElement chooseSize= driver.findElement(By.xpath("//div[@class='O7KAVeyES2Dm7FutyoPSf ui-product-page-sizes-chooser-item_enabled ui-product-page-sizes-chooser-item']"));
         chooseSize.click();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        WebElement goToTheBasket= driver.findElement(By.xpath("//div[@class='d-modal__bottom']//a"));
+       WebElement goToTheBasket= driver.findElement(By.xpath("//div[@class='d-modal__bottom']//a"));
         goToTheBasket.click();
         Assertions.assertEquals("https://www.lamoda.ru/checkout/cart/",getDriver().getCurrentUrl());
 
 
-    }
+    }*/
 
-    @Test
+  /*  @Test
     public void DetailDescription (){
         init();
         getPage();
@@ -167,7 +167,7 @@ public class LamodaTests {
 
 
 
-    }
+    }*/
 
 
 
