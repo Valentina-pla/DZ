@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: org.example.TriangleTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 0.049 s <<< FAILURE! - in org.example.TriangleTest
+org.example.TriangleTest.testWithCsvSource(String, int)  Time elapsed: 0.025 s  <<< ERROR!
+java.lang.NoSuchMethodError: 'java.util.Optional org.junit.jupiter.api.extension.ExtensionContext.getConfigurationParameter(java.lang.String, java.util.function.Function)'
+
+org.example.TriangleTest.MyTest2(int, int, int)  Time elapsed: 0.026 s  <<< ERROR!
+java.lang.NoSuchMethodError: 'java.util.Optional org.junit.jupiter.api.extension.ExtensionContext.getConfigurationParameter(java.lang.String, java.util.function.Function)'
+
+org.example.TriangleTest.MyTest3(int, int, int)  Time elapsed: 0.026 s  <<< ERROR!
+java.lang.NoSuchMethodError: 'java.util.Optional org.junit.jupiter.api.extension.ExtensionContext.getConfigurationParameter(java.lang.String, java.util.function.Function)'
+
+org.example.TriangleTest.MyTest4(int, int, int)  Time elapsed: 0.028 s  <<< ERROR!
+java.lang.NoSuchMethodError: 'java.util.Optional org.junit.jupiter.api.extension.ExtensionContext.getConfigurationParameter(java.lang.String, java.util.function.Function)'
+
