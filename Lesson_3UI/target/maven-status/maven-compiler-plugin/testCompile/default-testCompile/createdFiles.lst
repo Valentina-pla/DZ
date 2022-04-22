@@ -1,2 +1,2 @@
-org\example\AppTest.class
-org\example\TriangleTest.class
+org\example\AbstractTest.class
+org\example\MainPageTest.class

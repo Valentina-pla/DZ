@@ -1,13 +1,20 @@
 package org.example;
 
-import net.bytebuddy.asm.Advice;
-import org.junit.Test;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
 import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.Keys;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
 
 public class MainPageTest extends AbstractTest {
 
+
     @Test
+    @DisplayName("Проверка успешного добавление товара в крзину")
+    @Story("Работа  с каталогом")
+    @Severity(SeverityLevel.CRITICAL)
    public void AddItemTest (){
         setDriver();
         initMainPage();
@@ -26,6 +33,9 @@ public class MainPageTest extends AbstractTest {
     }
 
     @Test
+    @DisplayName("Проверка просмотра подрбнстей выбраннго товара")
+    @Story("Работа  с каталогом")
+   @Severity(SeverityLevel.MINOR)
     public void DetailDescription(){
         setDriver();
         initMainPage();
@@ -39,7 +49,10 @@ public class MainPageTest extends AbstractTest {
                 .clickElementDescription();
         //Assertions.assertEquals("https://www.lamoda.ru/p/mp002xw0a0xt/clothes-finnflare-sviter/",getWebDriver().getCurrentUrl());
     }
+
     @Test
+    @DisplayName("Проверка выбра геолокации")
+    @Severity(SeverityLevel.TRIVIAL)
     public void ChooseLocation(){
         setDriver();
         initMainPage();
@@ -51,6 +64,9 @@ public class MainPageTest extends AbstractTest {
     }
 
     @Test
+    @DisplayName("Проверка поиска товара")
+    @Story("Работа  с каталогом")
+    @Severity(SeverityLevel.BLOCKER)
     public void SearchItem (){
         setDriver();
         initMainPage();
@@ -65,7 +81,9 @@ public class MainPageTest extends AbstractTest {
     }
 
     @Test
-
+    @DisplayName("Проверка поиска товара на англ.раскладке клавиатуры")
+    @Story("Работа  с каталогом")
+    @Severity(SeverityLevel.TRIVIAL)
     public void SearchOnEnglishKeyboard(){
         setDriver();
         initMainPage();
@@ -79,7 +97,8 @@ public class MainPageTest extends AbstractTest {
     }
 
     @Test
-
+    @DisplayName("Проверка оформления подписки на сайте")
+    @Severity(SeverityLevel.TRIVIAL)
     public void SubscriptionTest (){
 
         setDriver();
