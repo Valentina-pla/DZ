@@ -1,0 +1,472 @@
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"CompilerConfiguration\">\r\n    <option name=\"USE_RELEASE_OPTION\" value=\"false\" />\r\n    <annotationProcessing>\r\n      <profile name=\"Maven default annotation processors profile\" enabled=\"true\">\r\n        <sourceOutputDir name=\"target/generated-sources/annotations\" />\r\n        <sourceTestOutputDir name=\"target/generated-test-sources/test-annotations\" />\r\n        <outputRelativeToContentRoot value=\"true\" />\r\n        <module name=\"test_backend\" />\r\n        <module name=\"Test backend\" />\r\n      </profile>\r\n    </annotationProcessing>\r\n    <bytecodeTargetLevel target=\"11\" />\r\n  </component>\r\n  <component name=\"JavacSettings\">\r\n    <option name=\"ADDITIONAL_OPTIONS_OVERRIDE\">\r\n      <module name=\"test_backend\" options=\"--add-exports java.xml/com.sun.org.apache.xerces.internal.util=ALL-UNNAMED\" />\r\n    </option>\r\n  </component>\r\n</project>
+===================================================================
+diff --git a/.idea/compiler.xml b/.idea/compiler.xml
+--- a/.idea/compiler.xml	
++++ b/.idea/compiler.xml	
+@@ -3,6 +3,7 @@
+   <component name="CompilerConfiguration">
+     <option name="USE_RELEASE_OPTION" value="false" />
+     <annotationProcessing>
++      <profile default="true" name="Default" enabled="true" />
+       <profile name="Maven default annotation processors profile" enabled="true">
+         <sourceOutputDir name="target/generated-sources/annotations" />
+         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+@@ -15,7 +16,7 @@
+   </component>
+   <component name="JavacSettings">
+     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+-      <module name="test_backend" options="--add-exports java.xml/com.sun.org.apache.xerces.internal.util=ALL-UNNAMED" />
++      <module name="test_backend" options="" />
+     </option>
+   </component>
+ </project>
+\ No newline at end of file
+Index: src/test/java/PostRecipeCuisine.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import io.restassured.path.json.JsonPath;\r\nimport org.junit.jupiter.api.Test;\r\n\r\nimport static io.restassured.RestAssured.given;\r\nimport static org.hamcrest.MatcherAssert.assertThat;\r\nimport static org.hamcrest.Matchers.equalTo;\r\n\r\npublic class PostRecipeCuisine {\r\n\r\n\r\n    @Test\r\n    void postRecipeCuisinePorkWithBeans() {\r\n        JsonPath response = given()\r\n                .queryParam(\"apiKey\",\"f0aff8f0262c4d24a997529555086625\")\r\n                .queryParam(\"title\", \"Pork roast with green beans\")\r\n                .when()\r\n                .post(\"https://api.spoonacular.com/recipes/cuisine\")\r\n                .body()\r\n                .jsonPath();\r\n        assertThat(response.get(\"cuisine\"), equalTo(\"Mediterranean\"));\r\n\r\n    }\r\n\r\n    @Test\r\n    void postRecipeCuisinePotato() {\r\n        JsonPath response = given()\r\n                .queryParam(\"apiKey\",\"f0aff8f0262c4d24a997529555086625\")\r\n                .queryParam(\"title\", \"potato\")\r\n                .when()\r\n                .post(\"https://api.spoonacular.com/recipes/cuisine\")\r\n                .body()\r\n                .jsonPath();\r\n        assertThat(response.get(\"cuisines[1]\"), equalTo(\"European\"));\r\n\r\n    }\r\n\r\n    @Test\r\n    void postRecipeCuisineRice() {\r\n        JsonPath response = given()\r\n                .queryParam(\"apiKey\",\"f0aff8f0262c4d24a997529555086625\")\r\n                .queryParam(\"title\", \"rice with chicken\")\r\n                .when()\r\n                .post(\"https://api.spoonacular.com/recipes/cuisine\")\r\n                .body()\r\n                .jsonPath();\r\n        assertThat(response.get(\"cuisines[2]\"), equalTo(\"Italian\"));\r\n\r\n    }\r\n\r\n    @Test\r\n    void postRecipeCuisineFri() {\r\n        JsonPath response = given()\r\n                .queryParam(\"apiKey\",\"f0aff8f0262c4d24a997529555086625\")\r\n                .queryParam(\"title\", \"frii\")\r\n                .when()\r\n                .post(\"https://api.spoonacular.com/recipes/cuisine\")\r\n                .body()\r\n                .jsonPath();\r\n        assertThat(response.get(\"cuisines[0]\"), equalTo(\"Mediterranean\"));\r\n\r\n    }\r\n\r\n    @Test\r\n    void postRecipeCuisineBurger() {\r\n        JsonPath response = given()\r\n                .queryParam(\"apiKey\",\"f0aff8f0262c4d24a997529555086625\")\r\n                .queryParam(\"title\", \"burger\")\r\n                .when()\r\n                .post(\"https://api.spoonacular.com/recipes/cuisine\")\r\n                .body()\r\n                .jsonPath();\r\n        assertThat(response.get(\"cuisines[0]\"), equalTo(\"American\"));\r\n\r\n    }\r\n\r\n\r\n}\r\n
+===================================================================
+diff --git a/src/test/java/PostRecipeCuisine.java b/src/test/java/PostRecipeCuisine.java
+--- a/src/test/java/PostRecipeCuisine.java	
++++ b/src/test/java/PostRecipeCuisine.java	
+@@ -1,75 +1,118 @@
++import io.restassured.builder.RequestSpecBuilder;
++import io.restassured.builder.ResponseSpecBuilder;
++import io.restassured.http.ContentType;
+ import io.restassured.path.json.JsonPath;
++import org.junit.jupiter.api.BeforeEach;
+ import org.junit.jupiter.api.Test;
+ 
+-import static io.restassured.RestAssured.given;
++import static io.restassured.RestAssured.*;
++import static io.restassured.RestAssured.requestSpecification;
+ import static org.hamcrest.MatcherAssert.assertThat;
++import static org.hamcrest.Matchers.containsString;
+ import static org.hamcrest.Matchers.equalTo;
++import com.fasterxml.jackson.annotation.JsonInclude;
++import com.fasterxml.jackson.annotation.JsonProperty;
++import com.fasterxml.jackson.annotation.JsonPropertyOrder;
++import java.util.ArrayList;
++import java.util.Collections;
++import java.util.List;
++
+ 
+ public class PostRecipeCuisine {
+ 
+ 
++    @BeforeEach
++    void beforeTest(){
++        responseSpecification=new ResponseSpecBuilder()
++                .expectStatusCode(200)
++                //.expectStatusLine("HTTP/1.1 200 OK")
++                .expectContentType(ContentType.JSON)
++                .build();
++
++        requestSpecification=new RequestSpecBuilder()
++                .addQueryParam("apiKey", "f0aff8f0262c4d24a997529555086625")
++                //  .addQueryParam("query", "Pasta")
++                .setContentType(ContentType.JSON)
++                .build();
++    }
++
++
+     @Test
+     void postRecipeCuisinePorkWithBeans() {
+-        JsonPath response = given()
+-                .queryParam("apiKey","f0aff8f0262c4d24a997529555086625")
++        Response response = given().spec(requestSpecification)
+                 .queryParam("title", "Pork roast with green beans")
+                 .when()
+                 .post("https://api.spoonacular.com/recipes/cuisine")
++                .then()
++                .extract()
++                .response()
+                 .body()
+-                .jsonPath();
+-        assertThat(response.get("cuisine"), equalTo("Mediterranean"));
++                .as(Response.class);
++        assertThat(response.getCuisine(), containsString("Italian"));
+ 
+     }
+ 
+     @Test
+     void postRecipeCuisinePotato() {
+-        JsonPath response = given()
+-                .queryParam("apiKey","f0aff8f0262c4d24a997529555086625")
++        Response response = given()
++                .spec(requestSpecification)
+                 .queryParam("title", "potato")
+                 .when()
+                 .post("https://api.spoonacular.com/recipes/cuisine")
++                .then()
++                .extract()
++                .response()
+                 .body()
+-                .jsonPath();
+-        assertThat(response.get("cuisines[1]"), equalTo("European"));
++                .as(Response.class);
++        assertThat(response.getCuisine(), containsString("Italian"));
+ 
+     }
+ 
+     @Test
+     void postRecipeCuisineRice() {
+-        JsonPath response = given()
+-                .queryParam("apiKey","f0aff8f0262c4d24a997529555086625")
++        Response response = given()
++                .spec(requestSpecification)
+                 .queryParam("title", "rice with chicken")
+                 .when()
+                 .post("https://api.spoonacular.com/recipes/cuisine")
++                .then()
++                .extract()
++                .response()
+                 .body()
+-                .jsonPath();
+-        assertThat(response.get("cuisines[2]"), equalTo("Italian"));
++                .as(Response.class);
++        assertThat(response.getCuisines().get(0),equalTo("Italian"));
+ 
+     }
+ 
+     @Test
+     void postRecipeCuisineFri() {
+-        JsonPath response = given()
+-                .queryParam("apiKey","f0aff8f0262c4d24a997529555086625")
++        Response response = given()
++                .spec(requestSpecification)
+                 .queryParam("title", "frii")
+                 .when()
+                 .post("https://api.spoonacular.com/recipes/cuisine")
++                .then()
++                .extract()
++                .response()
+                 .body()
+-                .jsonPath();
+-        assertThat(response.get("cuisines[0]"), equalTo("Mediterranean"));
++                .as(Response.class);
++        assertThat(response.getCuisines().get(1), equalTo("Mediterranean"));
+ 
+     }
+ 
+     @Test
+     void postRecipeCuisineBurger() {
+-        JsonPath response = given()
+-                .queryParam("apiKey","f0aff8f0262c4d24a997529555086625")
++        Response response = given()
++                .spec(requestSpecification)
+                 .queryParam("title", "burger")
+                 .when()
+                 .post("https://api.spoonacular.com/recipes/cuisine")
++                .then()
++                .extract()
++                .response()
+                 .body()
+-                .jsonPath();
+-        assertThat(response.get("cuisines[0]"), equalTo("American"));
++                .as(Response.class);
++        assertThat(response.getCuisines().get(2), equalTo("European"));
+ 
+     }
+ 
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\"\r\n         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\">\r\n    <modelVersion>4.0.0</modelVersion>\r\n\r\n    <groupId>org.example</groupId>\r\n    <artifactId>test_backend</artifactId>\r\n    <version>1.0-SNAPSHOT</version>\r\n    <build>\r\n        <plugins>\r\n            <plugin>\r\n                <groupId>org.apache.maven.plugins</groupId>\r\n                <artifactId>maven-compiler-plugin</artifactId>\r\n                <configuration>\r\n                    <source>16</source>\r\n                    <target>16</target>\r\n                </configuration>\r\n            </plugin>\r\n        </plugins>\r\n    </build>\r\n\r\n    <properties>\r\n        <maven.compiler.source>17</maven.compiler.source>\r\n        <maven.compiler.target>17</maven.compiler.target>\r\n    </properties>\r\n    <dependencies>\r\n        <!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->\r\n        <dependency>\r\n            <groupId>io.rest-assured</groupId>\r\n            <artifactId>rest-assured</artifactId>\r\n            <version>4.3.3</version>\r\n            <scope>test</scope>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>org.junit.jupiter</groupId>\r\n            <artifactId>junit-jupiter</artifactId>\r\n            <version>5.7.0</version>\r\n            <scope>test</scope>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>commons-io</groupId>\r\n            <artifactId>commons-io</artifactId>\r\n            <version>2.6</version>\r\n        </dependency>\r\n\r\n    </dependencies>\r\n\r\n\r\n</project>
+===================================================================
+diff --git a/pom.xml b/pom.xml
+--- a/pom.xml	
++++ b/pom.xml	
+@@ -44,6 +44,34 @@
+             <version>2.6</version>
+         </dependency>
+ 
++        <dependency>
++            <groupId>com.fasterxml.jackson.core</groupId>
++            <artifactId>jackson-annotations</artifactId>
++            <version>2.13.3</version>
++        </dependency>
++        <dependency>
++            <groupId>com.fasterxml.jackson.core</groupId>
++            <artifactId>jackson-databind</artifactId>
++            <version>2.9.5</version>
++        </dependency>
++        <dependency>
++            <groupId>com.fasterxml.jackson.core</groupId>
++            <artifactId>jackson-core</artifactId>
++            <version>2.13.3</version>
++        </dependency>
++        <dependency>
++            <groupId>org.projectlombok</groupId>
++            <artifactId>lombok</artifactId>
++            <version>1.18.24</version>
++            <scope>provided</scope>
++        </dependency>
++        <dependency>
++            <groupId>com.google.code.gson</groupId>
++            <artifactId>gson</artifactId>
++            <version>2.8.6</version>
++            <scope>test</scope>
++        </dependency>
++
+     </dependencies>
+ 
+ 
+Index: src/test/java/MealPlan.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import io.restassured.RestAssured;\r\nimport io.restassured.response.Response;\r\nimport io.restassured.specification.RequestSpecification;\r\nimport org.junit.jupiter.api.AfterEach;\r\nimport org.junit.jupiter.api.Test;\r\n\r\nimport static io.restassured.RestAssured.given;\r\n\r\npublic class MealPlan {\r\n\r\n    String id;\r\n    @Test\r\n    void addAndDeleteMealTest() {\r\n        id = given()\r\n                .queryParam(\"hash\", \"bd709e5bda1165a4b65b87928dad8b58704d7601\")\r\n                .queryParam(\"apiKey\", \"f0aff8f0262c4d24a997529555086625\")\r\n                .body(\"{\\n\"\r\n                        + \" \\\"date\\\": 1644881179,\\n\"\r\n                        + \" \\\"slot\\\": 1,\\n\"\r\n                        + \" \\\"position\\\": 0,\\n\"\r\n                        + \" \\\"type\\\": \\\"INGREDIENTS\\\",\\n\"\r\n                        + \" \\\"value\\\": {\\n\"\r\n                        + \" \\\"ingredients\\\": [\\n\"\r\n                        + \" {\\n\"\r\n                        + \" \\\"name\\\": \\\"1 banana\\\"\\n\"\r\n                        + \" }\\n\"\r\n                        + \" ]\\n\"\r\n                        + \" }\\n\"\r\n                        + \"}\")\r\n\r\n                .when()\r\n                .post(\"https://api.spoonacular.com/mealplanner/vplatonova/items\")\r\n                .then()\r\n                .statusCode(200)\r\n                .extract()\r\n                .jsonPath()\r\n                .get(\"id\")\r\n                .toString();\r\n\r\n    }\r\n\r\n    @AfterEach\r\n    void tearDown() {\r\n        given()\r\n                .queryParam(\"hash\", \"bd709e5bda1165a4b65b87928dad8b58704d7601\")\r\n                .queryParam(\"apiKey\", \"f0aff8f0262c4d24a997529555086625\")\r\n                .delete(\"https://api.spoonacular.com/mealplanner/vplatonova/items/\" + id)\r\n                .then()\r\n                .statusCode(200);\r\n    }\r\n\r\n    \r\n\r\n\r\n\r\n\r\n}\r\n
+===================================================================
+diff --git a/src/test/java/MealPlan.java b/src/test/java/MealPlan.java
+--- a/src/test/java/MealPlan.java	
++++ b/src/test/java/MealPlan.java	
+@@ -1,19 +1,71 @@
++import com.fasterxml.jackson.core.JsonProcessingException;
++import com.fasterxml.jackson.databind.ObjectMapper;
+ import io.restassured.RestAssured;
++import io.restassured.builder.RequestSpecBuilder;
++import io.restassured.builder.ResponseSpecBuilder;
++import io.restassured.http.ContentType;
+ import io.restassured.response.Response;
+ import io.restassured.specification.RequestSpecification;
+ import org.junit.jupiter.api.AfterEach;
++import org.junit.jupiter.api.BeforeEach;
+ import org.junit.jupiter.api.Test;
+ 
+-import static io.restassured.RestAssured.given;
++import java.lang.reflect.Type;
++
++import static io.restassured.RestAssured.*;
++import static org.hamcrest.MatcherAssert.assertThat;
++import static org.hamcrest.Matchers.containsString;
++import static org.hamcrest.Matchers.equalTo;
+ 
+ public class MealPlan {
+ 
+-    String id;
++
++    @BeforeEach
++    void beforeTest(){
++        responseSpecification=new ResponseSpecBuilder()
++                .expectStatusCode(200)
++                //.expectStatusLine("HTTP/1.1 200 OK")
++
++                .build();
++
++        requestSpecification=new RequestSpecBuilder()
++                .addQueryParam("apiKey", "f0aff8f0262c4d24a997529555086625")
++                .addQueryParam("hash", "bd709e5bda1165a4b65b87928dad8b58704d7601")
++                .build();
++    }
++
++
++
++    @Test
++    void addAndDeleteMealTest111(){
++
++        AddMealRequest addMealRequest=new AddMealRequest();
++        addMealRequest.setDate(1644881179);
++        addMealRequest.setType("1");
++        addMealRequest.setPosition(0);
++        addMealRequest.setType("INGREDIENTS");
++        addMealRequest.setValue("name" ,"banana");
++
++
++
++        Response response= (Response) given().spec(requestSpecification).body(addMealRequest)
++                .when()
++                .post("https://api.spoonacular.com/mealplanner/vplatonova/items")
++                .then()
++                .extract()
++                .response()
++                .body()
++                .as(AddMealRequest.class);
++
++
++    }
++
++
++
+     @Test
+     void addAndDeleteMealTest() {
+-        id = given()
+-                .queryParam("hash", "bd709e5bda1165a4b65b87928dad8b58704d7601")
+-                .queryParam("apiKey", "f0aff8f0262c4d24a997529555086625")
++        String id = given()
++                .spec(requestSpecification)
+                 .body("{\n"
+                         + " \"date\": 1644881179,\n"
+                         + " \"slot\": 1,\n"
+@@ -27,7 +79,6 @@
+                         + " ]\n"
+                         + " }\n"
+                         + "}")
+-
+                 .when()
+                 .post("https://api.spoonacular.com/mealplanner/vplatonova/items")
+                 .then()
+@@ -37,17 +88,17 @@
+                 .get("id")
+                 .toString();
+ 
+-    }
+ 
+-    @AfterEach
+-    void tearDown() {
+-        given()
+-                .queryParam("hash", "bd709e5bda1165a4b65b87928dad8b58704d7601")
+-                .queryParam("apiKey", "f0aff8f0262c4d24a997529555086625")
+-                .delete("https://api.spoonacular.com/mealplanner/vplatonova/items/" + id)
+-                .then()
+-                .statusCode(200);
+     }
++
++   // @AfterEach
++   // void tearDown() {
++     //   given()
++       //         .spec(requestSpecification)
++         //       .delete("https://api.spoonacular.com/mealplanner/vplatonova/items/" + id)
++           //     .then()
++             //   .statusCode(200);
++    //}
+ 
+     
+ 
+Index: src/test/java/RecipeTests.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import io.restassured.path.json.JsonPath;\r\nimport org.junit.jupiter.api.Test;\r\n\r\nimport static io.restassured.RestAssured.given;\r\nimport static org.hamcrest.MatcherAssert.assertThat;\r\nimport static org.hamcrest.Matchers.*;\r\n\r\npublic class RecipeTests {\r\n    private final String apikey = \"f0aff8f0262c4d24a997529555086625\";\r\n\r\n    @Test\r\n    void getRecipeWithQueryParametersTest() {\r\n        given()\r\n                .queryParam(\"apiKey\", \"f0aff8f0262c4d24a997529555086625\")\r\n                .queryParam(\"query\", \"Pasta\")\r\n                .when()\r\n                .get(\"https://api.spoonacular.com/recipes/complexSearch?query=Pasta\")\r\n                .then().assertThat().statusCode(200);\r\n\r\n    }\r\n    @Test\r\n    void getRecipeWithQueryPasta() {\r\n        JsonPath response = given()\r\n                .queryParam(\"apiKey\",\"f0aff8f0262c4d24a997529555086625\")\r\n                .queryParam(\"query\", \"Pasta\")\r\n                .when()\r\n                .get(\"https://api.spoonacular.com/recipes/complexSearch?query=Pasta\")\r\n                .body()\r\n                .jsonPath();\r\n        assertThat(response.get(\"results[0].title\"), equalTo(\"Pasta With Tuna\"));\r\n\r\n    }\r\n\r\n    @Test\r\n    void getRecipeWithQueryAfrican() {\r\n        JsonPath response = given()\r\n                .queryParam(\"apiKey\",\"f0aff8f0262c4d24a997529555086625\")\r\n                .queryParam(\"cuisine\", \"African\")\r\n                .when()\r\n                .get(\"https://api.spoonacular.com/recipes/complexSearch?cuisine=African\")\r\n                .body()\r\n                .jsonPath();\r\n        assertThat(response.get(\"results[0].title\"), equalTo(\"African Chicken Peanut Stew\"));\r\n\r\n    }\r\n\r\n\r\n    @Test\r\n    void getRecipeWithQueryAddRecipeInformation() {\r\n        JsonPath response = given()\r\n                .queryParam(\"apiKey\",\"f0aff8f0262c4d24a997529555086625\")\r\n                .queryParam(\"addRecipeInformation\", \"false\")\r\n                .when()\r\n                .get(\"https://api.spoonacular.com/recipes/complexSearch?addRecipeInformation=false\")\r\n                .body()\r\n                .jsonPath();\r\n        assertThat(response.get(\"results[0].title\"), equalTo(\"Cauliflower, Brown Rice, and Vegetable Fried Rice\"));\r\n\r\n    }\r\n\r\n    @Test\r\n    void getRecipeWithQueryRecipeBoxId() {\r\n        JsonPath response = given()\r\n                .queryParam(\"apiKey\",\"f0aff8f0262c4d24a997529555086625\")\r\n                .queryParam(\"recipeBoxId\", \"2468\")\r\n                .when()\r\n                .get(\"https://api.spoonacular.com/recipes/complexSearch?recipeBoxId=2468\")\r\n                .body()\r\n                .jsonPath();\r\n        assertThat(response.get(\"results[0].title\"), equalTo(\"Dark Chocolate Mousse\"));\r\n\r\n    }\r\n\r\n\r\n\r\n\r\n\r\n}\r\n\r\n\r\n
+===================================================================
+diff --git a/src/test/java/RecipeTests.java b/src/test/java/RecipeTests.java
+--- a/src/test/java/RecipeTests.java	
++++ b/src/test/java/RecipeTests.java	
+@@ -1,73 +1,108 @@
++import groovyjarjarantlr4.v4.runtime.atn.StarLoopEntryState;
++import io.restassured.RestAssured;
++import io.restassured.builder.RequestSpecBuilder;
++import io.restassured.builder.ResponseSpecBuilder;
++import io.restassured.filter.log.LogDetail;
++import io.restassured.http.ContentType;
+ import io.restassured.path.json.JsonPath;
++import io.restassured.specification.RequestSpecification;
++import org.hamcrest.Matchers;
++import org.junit.jupiter.api.BeforeEach;
+ import org.junit.jupiter.api.Test;
+ 
+-import static io.restassured.RestAssured.given;
++import static io.restassured.RestAssured.*;
+ import static org.hamcrest.MatcherAssert.assertThat;
+ import static org.hamcrest.Matchers.*;
+ 
+ public class RecipeTests {
+-    private final String apikey = "f0aff8f0262c4d24a997529555086625";
++
++    @BeforeEach
++    void beforeTest(){
++        responseSpecification=new ResponseSpecBuilder()
++                .expectStatusCode(200)
++                //.expectStatusLine("HTTP/1.1 200 OK")
++                .expectContentType(ContentType.JSON)
++                .build();
++
++        requestSpecification=new RequestSpecBuilder()
++                .addQueryParam("apiKey", "f0aff8f0262c4d24a997529555086625")
++                .setContentType(ContentType.JSON)
++                .build();
++    }
++
++
+ 
+     @Test
+     void getRecipeWithQueryParametersTest() {
+         given()
+-                .queryParam("apiKey", "f0aff8f0262c4d24a997529555086625")
++                .spec(requestSpecification)
+                 .queryParam("query", "Pasta")
+                 .when()
+                 .get("https://api.spoonacular.com/recipes/complexSearch?query=Pasta")
+-                .then().assertThat().statusCode(200);
+-
++                .then()
++                .spec(responseSpecification);
+     }
++
+     @Test
+     void getRecipeWithQueryPasta() {
+-        JsonPath response = given()
+-                .queryParam("apiKey","f0aff8f0262c4d24a997529555086625")
++       ResponseGet response = given()
++                .spec(requestSpecification)
+                 .queryParam("query", "Pasta")
+                 .when()
+                 .get("https://api.spoonacular.com/recipes/complexSearch?query=Pasta")
++                .then()
++                .extract()
+                 .body()
+-                .jsonPath();
+-        assertThat(response.get("results[0].title"), equalTo("Pasta With Tuna"));
++                .as(ResponseGet.class);
++        assertThat(response.getResults().get(0).getTitle(), equalTo("Pasta With Tuna"));
+ 
+     }
++
+ 
+     @Test
+     void getRecipeWithQueryAfrican() {
+-        JsonPath response = given()
++        ResponseGet response = given()
+                 .queryParam("apiKey","f0aff8f0262c4d24a997529555086625")
+                 .queryParam("cuisine", "African")
+                 .when()
+                 .get("https://api.spoonacular.com/recipes/complexSearch?cuisine=African")
++                .then()
++                .extract()
+                 .body()
+-                .jsonPath();
+-        assertThat(response.get("results[0].title"), equalTo("African Chicken Peanut Stew"));
++                .as(ResponseGet.class);
++        assertThat(response.getResults().get(0).getTitle(), equalTo("African Chicken Peanut Stew"));
+ 
+     }
+ 
+ 
+     @Test
+     void getRecipeWithQueryAddRecipeInformation() {
+-        JsonPath response = given()
++        ResponseGet response = given()
+                 .queryParam("apiKey","f0aff8f0262c4d24a997529555086625")
+                 .queryParam("addRecipeInformation", "false")
+                 .when()
+                 .get("https://api.spoonacular.com/recipes/complexSearch?addRecipeInformation=false")
++                .then()
++                .extract()
+                 .body()
+-                .jsonPath();
+-        assertThat(response.get("results[0].title"), equalTo("Cauliflower, Brown Rice, and Vegetable Fried Rice"));
++                .as(ResponseGet.class);
++        assertThat(response.getResults().get(0).getTitle(), equalTo("Cauliflower, Brown Rice, and Vegetable Fried Rice"));
++
+ 
+     }
+ 
+     @Test
+     void getRecipeWithQueryRecipeBoxId() {
+-        JsonPath response = given()
++        ResponseGet response = given()
+                 .queryParam("apiKey","f0aff8f0262c4d24a997529555086625")
+                 .queryParam("recipeBoxId", "2468")
+                 .when()
+                 .get("https://api.spoonacular.com/recipes/complexSearch?recipeBoxId=2468")
++                .then()
++                .extract()
+                 .body()
+-                .jsonPath();
+-        assertThat(response.get("results[0].title"), equalTo("Dark Chocolate Mousse"));
++                .as(ResponseGet.class);
++        assertThat(response.getResults().get(0).getTitle(), equalTo("Dark Chocolate Mousse"));
+ 
+     }
+ 
