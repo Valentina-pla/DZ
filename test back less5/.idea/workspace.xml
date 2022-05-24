@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e8322b89-4b00-4837-8f24-834da97b6615" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../DZ-backend3/test_backend/src/test/java/Response.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DZ-backend3/test_backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DZ-backend3/test_backend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DZ-backend3/test_backend/src/test/java/PostRecipeCuisine.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DZ-backend3/test_backend/src/test/java/PostRecipeCuisine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DZ-backend3/test_backend/src/test/java/RecipeTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DZ-backend3/test_backend/src/test/java/RecipeTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DZ-backend3/test_backend/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../DZ-backend3/test_backend/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="29WCUrvhCAGiK9fi3Lp84Pi7DND" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../test_back_less5" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e8322b89-4b00-4837-8f24-834da97b6615" name="Changes" comment="" />
+      <created>1653219475989</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1653219475989</updated>
+      <workItem from="1653219477243" duration="1043000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

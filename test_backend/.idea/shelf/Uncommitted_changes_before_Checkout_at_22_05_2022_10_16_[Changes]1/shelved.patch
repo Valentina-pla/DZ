@@ -1,0 +1,419 @@
+Index: src/test/java/AddMealRequest.java
+===================================================================
+diff --git a/src/test/java/AddMealRequest.java b/src/test/java/AddMealRequest.java
+new file mode 100644
+--- /dev/null	
++++ b/src/test/java/AddMealRequest.java	
+@@ -0,0 +1,165 @@
++
++import java.util.HashMap;
++import java.util.List;
++import java.util.Map;
++import javax.annotation.Generated;
++import com.fasterxml.jackson.annotation.JsonAnyGetter;
++import com.fasterxml.jackson.annotation.JsonAnySetter;
++import com.fasterxml.jackson.annotation.JsonIgnore;
++import com.fasterxml.jackson.annotation.JsonInclude;
++import com.fasterxml.jackson.annotation.JsonProperty;
++import com.fasterxml.jackson.annotation.JsonPropertyOrder;
++
++@JsonInclude(JsonInclude.Include.NON_NULL)
++@JsonPropertyOrder({
++        "date",
++        "slot",
++        "position",
++        "type",
++        "value"
++})
++@Generated("jsonschema2pojo")
++public class AddMealRequest {
++
++    @JsonProperty("date")
++    private Integer date;
++    @JsonProperty("slot")
++    private Integer slot;
++    @JsonProperty("position")
++    private Integer position;
++    @JsonProperty("type")
++    private String type;
++    @JsonProperty("value")
++    private Value value;
++    @JsonIgnore
++    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
++
++    @JsonProperty("date")
++    public Integer getDate() {
++        return date;
++    }
++
++    @JsonProperty("date")
++    public void setDate(Integer date) {
++        this.date = date;
++    }
++
++    @JsonProperty("slot")
++    public Integer getSlot() {
++        return slot;
++    }
++
++    @JsonProperty("slot")
++    public void setSlot(Integer slot) {
++        this.slot = slot;
++    }
++
++    @JsonProperty("position")
++    public Integer getPosition() {
++        return position;
++    }
++
++    @JsonProperty("position")
++    public void setPosition(Integer position) {
++        this.position = position;
++    }
++
++    @JsonProperty("type")
++    public String getType() {
++        return type;
++    }
++
++    @JsonProperty("type")
++    public void setType(String type) {
++        this.type = type;
++    }
++
++    @JsonProperty("value")
++    public Value getValue() {
++        return value;
++    }
++
++    @JsonProperty("value")
++    public void setValue(Value value) {
++        this.value = value;
++    }
++
++    @JsonAnyGetter
++    public Map<String, Object> getAdditionalProperties() {
++        return this.additionalProperties;
++    }
++
++    @JsonAnySetter
++    public void setAdditionalProperty(String name, Object value) {
++        this.additionalProperties.put(name, value);
++    }
++
++}
++
++@JsonInclude(JsonInclude.Include.NON_NULL)
++@JsonPropertyOrder({
++        "name"
++})
++@Generated("jsonschema2pojo")
++class Ingredient {
++
++    @JsonProperty("name")
++    private String name;
++    @JsonIgnore
++    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
++
++    @JsonProperty("name")
++    public String getName() {
++        return name;
++    }
++
++    @JsonProperty("name")
++    public void setName(String name) {
++        this.name = name;
++    }
++
++    @JsonAnyGetter
++    public Map<String, Object> getAdditionalProperties() {
++        return this.additionalProperties;
++    }
++
++    @JsonAnySetter
++    public void setAdditionalProperty(String name, Object value) {
++        this.additionalProperties.put(name, value);
++    }
++
++}
++
++@JsonInclude(JsonInclude.Include.NON_NULL)
++@JsonPropertyOrder({
++        "ingredients"
++})
++@Generated("jsonschema2pojo")
++class Value {
++
++    @JsonProperty("ingredients")
++    private List<Ingredient> ingredients = null;
++    @JsonIgnore
++    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
++
++    @JsonProperty("ingredients")
++    public List<Ingredient> getIngredients() {
++        return ingredients;
++    }
++
++    @JsonProperty("ingredients")
++    public void setIngredients(List<Ingredient> ingredients) {
++        this.ingredients = ingredients;
++    }
++
++    @JsonAnyGetter
++    public Map<String, Object> getAdditionalProperties() {
++        return this.additionalProperties;
++    }
++
++    @JsonAnySetter
++    public void setAdditionalProperty(String name, Object value) {
++        this.additionalProperties.put(name, value);
++    }
++
++}
+\ No newline at end of file
+Index: src/test/java/ResponseGet.java
+===================================================================
+diff --git a/src/test/java/ResponseGet.java b/src/test/java/ResponseGet.java
+new file mode 100644
+--- /dev/null	
++++ b/src/test/java/ResponseGet.java	
+@@ -0,0 +1,159 @@
++
++
++import java.util.HashMap;
++import java.util.List;
++import java.util.Map;
++import javax.annotation.Generated;
++import com.fasterxml.jackson.annotation.JsonAnyGetter;
++import com.fasterxml.jackson.annotation.JsonAnySetter;
++import com.fasterxml.jackson.annotation.JsonIgnore;
++import com.fasterxml.jackson.annotation.JsonInclude;
++import com.fasterxml.jackson.annotation.JsonProperty;
++import com.fasterxml.jackson.annotation.JsonPropertyOrder;
++
++@JsonInclude(JsonInclude.Include.NON_NULL)
++@JsonPropertyOrder({
++        "results",
++        "offset",
++        "number",
++        "totalResults"
++})
++@Generated("jsonschema2pojo")
++public class ResponseGet {
++
++    @JsonProperty("results")
++    private List<Result> results = null;
++    @JsonProperty("offset")
++    private Integer offset;
++    @JsonProperty("number")
++    private Integer number;
++    @JsonProperty("totalResults")
++    private Integer totalResults;
++    @JsonIgnore
++    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
++
++    @JsonProperty("results")
++    public List<Result> getResults() {
++        return results;
++    }
++
++    @JsonProperty("results")
++    public void setResults(List<Result> results) {
++        this.results = results;
++    }
++
++    @JsonProperty("offset")
++    public Integer getOffset() {
++        return offset;
++    }
++
++    @JsonProperty("offset")
++    public void setOffset(Integer offset) {
++        this.offset = offset;
++    }
++
++    @JsonProperty("number")
++    public Integer getNumber() {
++        return number;
++    }
++
++    @JsonProperty("number")
++    public void setNumber(Integer number) {
++        this.number = number;
++    }
++
++    @JsonProperty("totalResults")
++    public Integer getTotalResults() {
++        return totalResults;
++    }
++
++    @JsonProperty("totalResults")
++    public void setTotalResults(Integer totalResults) {
++        this.totalResults = totalResults;
++    }
++
++    @JsonAnyGetter
++    public Map<String, Object> getAdditionalProperties() {
++        return this.additionalProperties;
++    }
++
++    @JsonAnySetter
++    public void setAdditionalProperty(String name, Object value) {
++        this.additionalProperties.put(name, value);
++    }
++
++}
++
++
++@JsonInclude(JsonInclude.Include.NON_NULL)
++@JsonPropertyOrder({
++        "id",
++        "title",
++        "image",
++        "imageType"
++})
++@Generated("jsonschema2pojo")
++class Result {
++
++    @JsonProperty("id")
++    private Integer id;
++    @JsonProperty("title")
++    private String title;
++    @JsonProperty("image")
++    private String image;
++    @JsonProperty("imageType")
++    private String imageType;
++    @JsonIgnore
++    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
++
++    @JsonProperty("id")
++    public Integer getId() {
++        return id;
++    }
++
++    @JsonProperty("id")
++    public void setId(Integer id) {
++        this.id = id;
++    }
++
++    @JsonProperty("title")
++    public String getTitle() {
++        return title;
++    }
++
++    @JsonProperty("title")
++    public void setTitle(String title) {
++        this.title = title;
++    }
++
++    @JsonProperty("image")
++    public String getImage() {
++        return image;
++    }
++
++    @JsonProperty("image")
++    public void setImage(String image) {
++        this.image = image;
++    }
++
++    @JsonProperty("imageType")
++    public String getImageType() {
++        return imageType;
++    }
++
++    @JsonProperty("imageType")
++    public void setImageType(String imageType) {
++        this.imageType = imageType;
++    }
++
++    @JsonAnyGetter
++    public Map<String, Object> getAdditionalProperties() {
++        return this.additionalProperties;
++    }
++
++    @JsonAnySetter
++    public void setAdditionalProperty(String name, Object value) {
++        this.additionalProperties.put(name, value);
++    }
++
++}
+\ No newline at end of file
+Index: src/test/java/Response.java
+===================================================================
+diff --git a/src/test/java/Response.java b/src/test/java/Response.java
+new file mode 100644
+--- /dev/null	
++++ b/src/test/java/Response.java	
+@@ -0,0 +1,71 @@
++
++import java.util.HashMap;
++import java.util.List;
++import java.util.Map;
++import javax.annotation.Generated;
++import com.fasterxml.jackson.annotation.JsonAnyGetter;
++import com.fasterxml.jackson.annotation.JsonAnySetter;
++import com.fasterxml.jackson.annotation.JsonIgnore;
++import com.fasterxml.jackson.annotation.JsonInclude;
++import com.fasterxml.jackson.annotation.JsonProperty;
++import com.fasterxml.jackson.annotation.JsonPropertyOrder;
++
++@JsonInclude(JsonInclude.Include.NON_NULL)
++@JsonPropertyOrder({
++        "cuisine",
++        "cuisines",
++        "confidence"
++})
++@Generated("jsonschema2pojo")
++public class Response {
++
++    @JsonProperty("cuisine")
++    private String cuisine;
++    @JsonProperty("cuisines")
++    private List<String> cuisines = null;
++    @JsonProperty("confidence")
++    private Double confidence;
++    @JsonIgnore
++    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
++
++    @JsonProperty("cuisine")
++    public String getCuisine() {
++        return cuisine;
++    }
++
++    @JsonProperty("cuisine")
++    public void setCuisine(String cuisine) {
++        this.cuisine = cuisine;
++    }
++
++    @JsonProperty("cuisines")
++    public List<String> getCuisines() {
++        return cuisines;
++    }
++
++    @JsonProperty("cuisines")
++    public void setCuisines(List<String> cuisines) {
++        this.cuisines = cuisines;
++    }
++
++    @JsonProperty("confidence")
++    public Double getConfidence() {
++        return confidence;
++    }
++
++    @JsonProperty("confidence")
++    public void setConfidence(Double confidence) {
++        this.confidence = confidence;
++    }
++
++    @JsonAnyGetter
++    public Map<String, Object> getAdditionalProperties() {
++        return this.additionalProperties;
++    }
++
++    @JsonAnySetter
++    public void setAdditionalProperty(String name, Object value) {
++        this.additionalProperties.put(name, value);
++    }
++
++}
+\ No newline at end of file
