@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e8322b89-4b00-4837-8f24-834da97b6615" name="Changes" comment=".">
+      <change afterPath="$PROJECT_DIR$/../less6/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_11_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../less6/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_11_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../less6/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_11_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../less6/.idea/libraries/Maven__org_projectlombok_lombok_1_18_16.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/CategoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/GetCategoryResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/LoggingInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ProductService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/RetrofitUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/CreateProductTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/GetCategoryService.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+    </option>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="29WCUrvhCAGiK9fi3Lp84Pi7DND" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="inlay.hints.JAVA" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.CreateProductTest.getProductPositive">
+    <configuration name="CreateProductTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="test_back_less5" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="CreateProductTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CreateProductTest.getProductByIdPositive" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="test_back_less5" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="CreateProductTest" />
+      <option name="METHOD_NAME" value="getProductByIdPositive" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CreateProductTest.getProductPositive" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="test_back_less5" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="CreateProductTest" />
+      <option name="METHOD_NAME" value="getProductPositive" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CreateProductTest.modifyProductPositive" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="test_back_less5" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="CreateProductTest" />
+      <option name="METHOD_NAME" value="modifyProductPositive" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CreateProductTest.tearDown" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="test_back_less5" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="CreateProductTest" />
+      <option name="METHOD_NAME" value="tearDown" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.CreateProductTest.getProductPositive" />
+        <item itemvalue="JUnit.CreateProductTest" />
+        <item itemvalue="JUnit.CreateProductTest.modifyProductPositive" />
+        <item itemvalue="JUnit.CreateProductTest.tearDown" />
+        <item itemvalue="JUnit.CreateProductTest.getProductByIdPositive" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e8322b89-4b00-4837-8f24-834da97b6615" name="Changes" comment="" />
+      <created>1653219475989</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1653219475989</updated>
+      <workItem from="1653219477243" duration="954000" />
+      <workItem from="1653220553537" duration="617000" />
+      <workItem from="1653221189625" duration="132000" />
+      <workItem from="1653303796094" duration="558000" />
+      <workItem from="1653304730895" duration="2000" />
+      <workItem from="1653304763625" duration="4000" />
+      <workItem from="1653304801022" duration="1776000" />
+      <workItem from="1653306612314" duration="1802000" />
+      <workItem from="1653308860415" duration="969000" />
+      <workItem from="1653328523452" duration="1892000" />
+      <workItem from="1653330469272" duration="722000" />
+      <workItem from="1653386114188" duration="1775000" />
+      <workItem from="1653387930603" duration="1772000" />
+      <workItem from="1653389748376" duration="1869000" />
+      <workItem from="1653391653238" duration="30000" />
+      <workItem from="1653413373362" duration="1560000" />
+      <workItem from="1653416133466" duration="93000" />
+      <workItem from="1653416300606" duration="1729000" />
+      <workItem from="1653418065796" duration="1310000" />
+      <workItem from="1653476145383" duration="1765000" />
+      <workItem from="1653478064258" duration="1779000" />
+      <workItem from="1653479876600" duration="713000" />
+      <workItem from="1653480797782" duration="1150000" />
+      <workItem from="1653482263508" duration="1528000" />
+      <workItem from="1653741739749" duration="1815000" />
+      <workItem from="1653743590423" duration="723000" />
+      <workItem from="1653982865487" duration="1069000" />
+      <workItem from="1653992769225" duration="1317000" />
+      <workItem from="1653994121313" duration="1440000" />
+      <workItem from="1654006958168" duration="1190000" />
+      <workItem from="1654008482696" duration="1279000" />
+      <workItem from="1654340789347" duration="1673000" />
+      <workItem from="1654418590890" duration="1839000" />
+      <workItem from="1654423976166" duration="1825000" />
+      <workItem from="1654430490400" duration="196000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.io.FileNotFoundException" package="java.io" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="JUnit">
+        <watch expression="response.rawResponse" language="JAVA" />
+        <watch expression="response.rawResponse" language="JAVA" />
+        <watch expression="response.rawResponse" language="JAVA" />
+        <watch expression="response" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>
